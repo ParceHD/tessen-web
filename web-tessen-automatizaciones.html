@@ -1,7 +1,7 @@
-<title>Automatizaciones — TESSEN</title>
+<title>Automatizaciones e IA — TESSEN</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8" />
-<meta name="description" content="TESSEN — Automatizaciones y agentes de IA a medida para que la tecnología se encargue de las tareas repetitivas de tu negocio." />
+<meta name="description" content="TESSEN — Automatizaciones ya disponibles, consultoría de IA o automatizaciones a medida: tres formas de que la tecnología trabaje por ti." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -121,6 +121,28 @@
   .triple-line p { font-size: 1.15rem; font-weight: 600; color: var(--white); letter-spacing: 0.01em; }
   .triple-line p.lime { color: var(--lime); }
 
+  /* ---------- Tres opciones ---------- */
+  .offer-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 900px) { .offer-grid { grid-template-columns: repeat(3, 1fr); } }
+  .offer-card {
+    display: flex; flex-direction: column;
+    background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 34px 30px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .offer-card:hover { border-color: var(--lime); transform: translateY(-6px); }
+  .offer-icon { width: 40px; height: 40px; color: var(--lime); margin-bottom: 20px; }
+  .offer-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
+  .offer-card > p { font-size: 0.94rem; color: var(--gray-light); opacity: 0.75; margin-bottom: 22px; }
+  .offer-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; flex: 1; }
+  .offer-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 0.9rem; color: var(--gray-light); opacity: 0.85; }
+  .offer-list svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; color: var(--lime); }
+  .offer-cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 22px; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+    border: 1px solid var(--border); color: var(--white); transition: border-color 0.2s, color 0.2s;
+  }
+  .offer-card:hover .offer-cta { border-color: var(--lime); color: var(--lime); }
+
   /* ---------- Que automatizar ---------- */
   .automate-block { background: var(--black-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .automate-intro { max-width: 680px; margin: 0 auto 56px; text-align: center; }
@@ -213,18 +235,14 @@
   .closing-cta h2 { font-size: clamp(1.5rem, 3.4vw, 2.2rem); line-height: 1.3; max-width: 680px; margin: 0 auto 14px; }
   .closing-cta p.small { max-width: 560px; margin: 0 auto; opacity: 0.75; font-size: 0.98rem; }
 
-  /* ---------- Pricing (custom quote) ---------- */
+  /* ---------- Cierre sin precio ---------- */
   .price-single-wrap { max-width: 560px; margin: 0 auto; }
   .price-single {
     background: var(--black-alt); border: 1px solid var(--lime); box-shadow: 0 0 0 1px var(--lime) inset;
     border-radius: 24px; padding: 44px 40px; text-align: center;
   }
   .price-single h3 { font-size: 1.4rem; margin-bottom: 10px; }
-  .price-single .price { font-size: 1.9rem; font-weight: 600; color: var(--lime); margin-bottom: 8px; }
   .price-single .price-note { font-size: 0.9rem; color: var(--gray-light); opacity: 0.7; margin-bottom: 28px; }
-  .price-single .price-list { display: flex; flex-direction: column; gap: 12px; text-align: left; margin-bottom: 32px; }
-  .price-single .price-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.96rem; color: var(--gray-light); opacity: 0.88; }
-  .price-single .price-list svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 3px; color: var(--lime); }
   .price-single .price-cta {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
     padding: 15px 26px; border-radius: 999px; font-size: 0.95rem; font-weight: 600;
@@ -287,9 +305,9 @@
       <li><a href="index.html#metodo">Principios</a></li>
       <li><a href="index.html#servicios">Servicios</a></li>
       <li><a href="index.html#contacto">Contacto</a></li>
-      <li class="nav-cta-mobile"><a href="#presupuesto" class="btn btn-primary">Pedir presupuesto</a></li>
+      <li class="nav-cta-mobile"><a href="#opciones" class="btn btn-primary">Ver opciones</a></li>
     </ul>
-    <a href="#presupuesto" class="btn btn-primary nav-cta">Pedir presupuesto</a>
+    <a href="#opciones" class="btn btn-primary nav-cta">Ver opciones</a>
     <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </nav>
 </header>
@@ -303,7 +321,7 @@
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-6 6 6 6"/></svg>
         Volver a servicios
       </a>
-      <span class="eyebrow centered reveal in">Servicios · Automatizaciones</span>
+      <span class="eyebrow centered reveal in">Servicios · Automatizaciones e IA</span>
       <h1 class="reveal in">Si una tarea se repite, <span class="lime">¿por qué seguir haciéndola manualmente?</span></h1>
       <p class="subhero-lead reveal in">Cada día, las empresas dedican horas a tareas necesarias pero repetitivas:</p>
 
@@ -326,7 +344,52 @@
         <p class="lime">Más tiempo para tu negocio.</p>
       </div>
 
-      <a href="#presupuesto" class="btn btn-primary reveal in">Pedir presupuesto</a>
+      <a href="#opciones" class="btn btn-primary reveal in">Ver las 3 opciones</a>
+    </div>
+  </section>
+
+  <!-- TRES OPCIONES -->
+  <section id="opciones">
+    <div class="wrap">
+      <span class="eyebrow reveal">Tres formas de trabajar juntos</span>
+      <h2 class="section-title reveal">Elige por dónde empezar</h2>
+      <p class="section-sub reveal">Ya tengas claro qué quieres, necesites ayuda para decidirlo, o quieras algo que no existe todavía — tiene sitio aquí.</p>
+
+      <div class="offer-grid reveal">
+        <div class="offer-card">
+          <svg class="offer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6 8 14v20l16 8 16-8V14z"/><path d="M8 14l16 8 16-8M24 22v20"/></svg>
+          <h3>Automatizaciones ya disponibles</h3>
+          <p>Soluciones que ya hemos construido y podemos poner en marcha rápido en tu negocio.</p>
+          <ul class="offer-list">
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Bot de reservas</li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Notificaciones y recordatorios automáticos</li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Automatizaciones a medida sobre una base ya probada</li>
+          </ul>
+          <a class="offer-cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=tessenconsulting@gmail.com&su=Quiero%20ver%20las%20automatizaciones%20disponibles" target="_blank" rel="noopener">Quiero verlas</a>
+        </div>
+        <div class="offer-card">
+          <svg class="offer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M24 24l7-11-11 7z" stroke-linejoin="round"/></svg>
+          <h3>Consultoría de IA y análisis de automatizaciones</h3>
+          <p>Antes de construir nada, analizamos tu negocio y te decimos qué automatizar, y por qué.</p>
+          <ul class="offer-list">
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Diagnóstico de procesos y madurez digital</li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Mapa de oportunidades priorizado</li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Hoja de ruta clara, la ejecutes con nosotros o no</li>
+          </ul>
+          <a class="offer-cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=tessenconsulting@gmail.com&su=Quiero%20consultor%C3%ADa%20de%20IA%20y%20an%C3%A1lisis%20de%20automatizaciones" target="_blank" rel="noopener">Quiero el diagnóstico</a>
+        </div>
+        <div class="offer-card">
+          <svg class="offer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4.2 4.2M32.8 32.8 37 37M37 11l-4.2 4.2M15.2 32.8 11 37"/><circle cx="24" cy="24" r="9"/></svg>
+          <h3>Análisis y creación de automatizaciones a medida</h3>
+          <p>Cuando la solución que necesitas no existe todavía, la diseñamos y construimos desde cero para tu proceso.</p>
+          <ul class="offer-list">
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Analizamos tu proceso concreto</li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Diseñamos y conectamos la solución con tus herramientas</li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Implementamos, probamos y ajustamos contigo</li>
+          </ul>
+          <a class="offer-cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=tessenconsulting@gmail.com&su=Quiero%20una%20automatizaci%C3%B3n%20a%20medida" target="_blank" rel="noopener">Quiero mi automatización</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -521,21 +584,13 @@
     </div>
   </section>
 
-  <!-- PRESUPUESTO -->
-  <section id="presupuesto">
+  <!-- HABLEMOS -->
+  <section id="hablemos">
     <div class="wrap price-single-wrap">
-      <span class="eyebrow centered reveal">Precio</span>
-      <div class="price-single reveal">
-        <h3>Automatizaciones</h3>
-        <div class="price">Presupuesto personalizado</div>
-        <div class="price-note">Cada empresa automatiza procesos distintos — el alcance y el precio se definen tras la primera llamada.</div>
-        <ul class="price-list">
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Videollamada inicial para entender tus procesos</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Diseño de la automatización o agente de IA a medida</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Conexión con tus herramientas actuales</li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg>Implementación, pruebas y ajuste</li>
-        </ul>
-        <a class="price-cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=tessenconsulting@gmail.com&su=Quiero%20un%20presupuesto%20de%20automatizaci%C3%B3n" target="_blank" rel="noopener">Pedir presupuesto</a>
+      <div class="price-single reveal" style="text-align:center;">
+        <h3>¿Con cuál empezamos?</h3>
+        <div class="price-note" style="margin-bottom: 32px;">No hay un precio cerrado de antemano — cada empresa y cada opción son distintas. Lo hablamos directamente contigo, sin compromiso.</div>
+        <a class="price-cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=tessenconsulting@gmail.com&su=Quiero%20hablar%20sobre%20automatizaciones%20e%20IA" target="_blank" rel="noopener">Hablemos</a>
       </div>
     </div>
   </section>
