@@ -31,9 +31,6 @@
   }
 
   ::selection { background: var(--lime); color: var(--black); }
-  ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: var(--black); }
-  ::-webkit-scrollbar-thumb { background: var(--lime); opacity: 0.6; border-radius: 10px; }
 
   a { color: inherit; text-decoration: none; }
   img, svg { max-width: 100%; display: block; }
@@ -242,6 +239,40 @@
   .footer-nav a { font-size: 0.85rem; color: var(--gray-light); opacity: 0.7; }
   .footer-nav a:hover { color: var(--lime); opacity: 1; }
   .footer-copy { font-size: 0.8rem; color: var(--gray); }
+
+  /* ---------- Cookie banner ---------- */
+  .cookie-banner {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 200;
+    padding: 20px 24px;
+    transform: translateY(120%);
+    transition: transform 0.5s ease;
+  }
+  .cookie-banner.visible { transform: translateY(0); }
+  .cookie-banner-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--black-alt);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 22px 26px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .cookie-banner p {
+    font-size: 0.9rem;
+    color: var(--gray-light);
+    opacity: 0.85;
+    max-width: 560px;
+    margin: 0;
+  }
+  .cookie-actions { display: flex; gap: 12px; flex-shrink: 0; }
+  .cookie-actions .btn { padding: 11px 22px; font-size: 0.82rem; }
 </style>
 
 <header>
@@ -526,11 +557,34 @@
   </div>
 </footer>
 
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Usamos cookies propias para el funcionamiento básico de la web. Al continuar navegando, aceptas su uso.</p>
+    <div class="cookie-actions">
+      <button class="btn btn-ghost" id="cookieReject">Rechazar</button>
+      <button class="btn btn-primary" id="cookieAccept">Aceptar</button>
+    </div>
+  </div>
+</div>
+
 <script>
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
   burger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const cookieBanner = document.getElementById('cookieBanner');
+  if (!localStorage.getItem('tessen_cookie_consent')) {
+    setTimeout(() => cookieBanner.classList.add('visible'), 600);
+  }
+  document.getElementById('cookieAccept').addEventListener('click', () => {
+    localStorage.setItem('tessen_cookie_consent', 'accepted');
+    cookieBanner.classList.remove('visible');
+  });
+  document.getElementById('cookieReject').addEventListener('click', () => {
+    localStorage.setItem('tessen_cookie_consent', 'rejected');
+    cookieBanner.classList.remove('visible');
+  });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in'); });
