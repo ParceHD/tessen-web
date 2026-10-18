@@ -1,0 +1,14 @@
+version: 1.0.0
+files:
+  - url: https://github.com/ParceHD/tessen-web/releases/download/fokus-v1.0.0/FOKUS-Setup-1.0.0.exe
+    sha512: tgU1GCT9KKlFiKquB/OMaq5jbGtBRttRImt2/UyXTz0QEThQPQuSZjsAQGfI0cnDXQGfCjQ2NB1dtGNPx/HJWA==
+    size: 112333972
+path: https://github.com/ParceHD/tessen-web/releases/download/fokus-v1.0.0/FOKUS-Setup-1.0.0.exe
+sha512: tgU1GCT9KKlFiKquB/OMaq5jbGtBRttRImt2/UyXTz0QEThQPQuSZjsAQGfI0cnDXQGfCjQ2NB1dtGNPx/HJWA==
+releaseDate: '2026-10-18T15:14:29.277Z'
+fokusSignature: f1FDpSaH2kts/n8TdyZUu7RK24ryaGM5QBCwGk/KC4+d1OHMOQYBNlsCZyG9Dq/yl1MTjit+k7VVN2z1lX96AA==
+releaseNotes: |-
+  Primera versión de FOKUS.
+  - Agenda del día, tareas, calendario y asignaturas.
+  - Concentración con Pomodoro, modo profundo y sonido ambiente.
+  - Archivos de estudio, estadísticas, modo noche y modo ahorro.
