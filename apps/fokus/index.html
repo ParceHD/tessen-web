@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FOKUS — App de estudio gratuita para Windows · TESSEN</title>
+<meta name="description" content="FOKUS es una app de estudio gratuita para Windows: agenda del día, tareas, calendario, asignaturas y un temporizador de concentración. Sin cuentas ni anuncios. Hecha por TESSEN." />
+<link rel="canonical" href="https://tessenconsulting.com/apps/fokus/" />
+<link rel="icon" type="image/svg+xml" href="img/fokus-icon.svg" />
+<link rel="apple-touch-icon" href="img/fokus-icon-256.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="TESSEN" />
+<meta property="og:title" content="FOKUS — Study Beautifully" />
+<meta property="og:description" content="La app de estudio gratuita para Windows. Agenda, tareas, calendario y concentración. Hecha por TESSEN." />
+<meta property="og:image" content="https://tessenconsulting.com/apps/fokus/img/og-fokus.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://tessenconsulting.com/apps/fokus/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://tessenconsulting.com/apps/fokus/img/og-fokus.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FOKUS",
+  "operatingSystem": "Windows 10, Windows 11",
+  "applicationCategory": "EducationalApplication",
+  "description": "App de estudio gratuita: agenda del día, tareas, calendario, asignaturas y temporizador de concentración.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "image": "https://tessenconsulting.com/apps/fokus/img/og-fokus.png",
+  "url": "https://tessenconsulting.com/apps/fokus/",
+  "author": { "@type": "Organization", "name": "TESSEN", "url": "https://tessenconsulting.com/" }
+}
+</script>
+<style>
+  :root {
+    /* FOKUS */
+    --violet: #6D5CE8; --violet-600: #5B49D8; --violet-50: #F4F2FE; --violet-100: #EAE6FD;
+    --bg: #F7F7F4; --surface: #FFFFFF; --ink: #242338; --ink-2: #5C5A70; --line: #E8E7E1;
+    --serif: 'Fraunces', Georgia, serif; --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; height: auto; display: block; }
+  .window img { width: 100%; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  :focus-visible { outline: 3px solid rgba(109, 92, 232, .45); outline-offset: 3px; border-radius: 8px; }
+
+  /* ---------- Cabecera FOKUS ---------- */
+  .top { position: sticky; top: 0; z-index: 50; background: rgba(247, 247, 244, .82); backdrop-filter: saturate(1.4) blur(14px); border-bottom: 1px solid rgba(232, 231, 225, .8); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  .top-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .16em; font-size: .95rem; }
+  .top-logo img { width: 32px; height: 32px; }
+  .top-nav { display: flex; align-items: center; gap: 28px; font-size: .92rem; font-weight: 500; color: var(--ink-2); }
+  .top-nav a:hover { color: var(--violet); }
+  .top-cta { display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 11px; background: var(--violet); color: #fff; font-weight: 600; font-size: .9rem; white-space: nowrap; }
+  .top-cta:hover { background: var(--violet-600); }
+  @media (max-width: 760px) { .top-nav { display: none; } }
+
+  /* ---------- Sello "Hecha por TESSEN" ---------- */
+  .tessen-tile { width: 30px; height: 30px; border-radius: 8px; background: #0b0b0d; display: grid; place-items: center; flex: none; }
+  .tessen-tile img { width: 72%; height: 72%; object-fit: contain; }
+  .by { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px 0 6px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: .85rem; color: var(--ink-2); transition: border-color .2s; }
+  .by b { color: var(--ink); letter-spacing: .12em; font-weight: 700; }
+  .by:hover { border-color: #c9c2f6; }
+
+  /* ---------- Botones FOKUS ---------- */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 26px; border-radius: 14px; font-weight: 600; font-size: 1rem; transition: transform .15s ease, box-shadow .2s ease, background .2s ease; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-primary { background: var(--violet); color: #fff; box-shadow: 0 12px 30px -12px rgba(109, 92, 232, .7); }
+  .btn-primary:hover { background: var(--violet-600); transform: translateY(-1px); }
+  .btn-ghost { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: #c9c2f6; }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding: 72px 0 40px; overflow: hidden;
+    background: radial-gradient(55% 60% at 8% 0%, rgba(213, 205, 250, .7), transparent 70%), radial-gradient(45% 55% at 100% 10%, rgba(253, 230, 214, .8), transparent 70%); }
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  @media (min-width: 980px) { .hero-grid { grid-template-columns: 460px 1fr; } }
+  .brand-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-bottom: 26px; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .16em; font-size: 1.05rem; }
+  .brand img { width: 44px; height: 44px; }
+  h1 { font-family: var(--serif); font-weight: 420; font-size: clamp(2.8rem, 7vw, 4.6rem); line-height: 1; letter-spacing: -.03em; margin-bottom: 22px; }
+  h1 em, h2 em { color: var(--violet); }
+  .lead { font-size: 1.15rem; color: var(--ink-2); max-width: 470px; margin-bottom: 30px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+  .meta { font-size: .88rem; color: var(--ink-2); }
+  .meta b { color: var(--ink); font-weight: 600; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: .85rem; font-weight: 500; }
+  .chip svg { width: 15px; height: 15px; color: var(--violet); }
+  .window { border-radius: 18px; overflow: hidden; background: var(--surface); border: 1px solid rgba(36, 35, 56, .08); box-shadow: 0 2px 6px rgba(36, 35, 56, .05), 0 40px 90px -36px rgba(36, 35, 56, .4); }
+  .hero .window { transform: perspective(1800px) rotateY(-4deg); transform-origin: left center; }
+  @media (max-width: 979px) { .hero .window { transform: none; } }
+
+  /* ---------- Secciones ---------- */
+  section { padding: 88px 0; }
+  .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--violet); margin-bottom: 12px; display: block; }
+  h2 { font-family: var(--serif); font-weight: 420; font-size: clamp(2rem, 4.4vw, 3rem); line-height: 1.05; letter-spacing: -.025em; margin-bottom: 16px; }
+  .sub { color: var(--ink-2); font-size: 1.08rem; max-width: 620px; }
+  .feature { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; padding: 48px 0; }
+  @media (min-width: 900px) { .feature { grid-template-columns: 1fr 1.35fr; } .feature.rev { grid-template-columns: 1.35fr 1fr; } .feature.rev .txt { order: 2; } }
+  .feature .txt p { color: var(--ink-2); font-size: 1.05rem; margin-bottom: 14px; }
+  .feature ul { list-style: none; display: grid; gap: 10px; margin-top: 18px; }
+  .feature li { display: flex; gap: 10px; align-items: flex-start; font-size: .98rem; }
+  .feature li svg { width: 18px; height: 18px; color: var(--violet); flex: none; margin-top: 3px; }
+  .grid3 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
+  @media (min-width: 700px) { .grid3 { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+  .card { background: var(--surface); border: 1px solid #F0EFEA; border-radius: 20px; padding: 26px; box-shadow: 0 1px 2px rgba(36, 35, 56, .04), 0 10px 30px -18px rgba(36, 35, 56, .18); }
+  .card .ico { width: 44px; height: 44px; border-radius: 13px; background: var(--violet-50); color: var(--violet); display: grid; place-items: center; margin-bottom: 16px; }
+  .card .ico svg { width: 22px; height: 22px; }
+  .card h3 { font-size: 1.08rem; font-weight: 650; margin-bottom: 6px; letter-spacing: -.01em; }
+  .card p { color: var(--ink-2); font-size: .95rem; }
+  .night { background: #121119; color: #EDECF6; }
+  .night .sub, .night .feature .txt p { color: #ABA9C0; }
+  .night .eyebrow { color: #A99DF8; }
+  .night h2 em { color: #A99DF8; }
+  .night .window { border-color: rgba(255, 255, 255, .06); box-shadow: 0 40px 90px -36px rgba(0, 0, 0, .8); }
+  .private { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+  /* ---------- Descarga ---------- */
+  .download { text-align: center; }
+  .download-box { max-width: 720px; margin: 0 auto; background: var(--surface); border-radius: 28px; padding: 48px 32px; box-shadow: 0 2px 6px rgba(36, 35, 56, .05), 0 40px 90px -40px rgba(36, 35, 56, .35); border: 1px solid #F0EFEA; }
+  .download-box img { width: 84px; height: 84px; margin: 0 auto 18px; }
+  .download-box .actions { justify-content: center; margin-top: 24px; }
+  .steps { text-align: left; margin: 28px auto 0; max-width: 520px; display: grid; gap: 10px; counter-reset: s; }
+  .steps li { list-style: none; display: flex; gap: 12px; font-size: .95rem; color: var(--ink-2); }
+  .steps li::before { counter-increment: s; content: counter(s); width: 24px; height: 24px; border-radius: 50%; background: var(--violet-50); color: var(--violet); font-weight: 700; font-size: .8rem; display: grid; place-items: center; flex: none; }
+  .note { margin: 22px auto 0; max-width: 560px; text-align: left; font-size: .88rem; color: var(--ink-2); background: var(--bg); border-radius: 14px; padding: 14px 16px; border: 1px solid var(--line); }
+  .note b { color: var(--ink); }
+  .hash { font-family: ui-monospace, Consolas, monospace; font-size: .72rem; word-break: break-all; color: var(--ink-2); }
+
+  /* ---------- FAQ ---------- */
+  .faq { max-width: 820px; margin: 36px auto 0; display: grid; gap: 10px; }
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; }
+  summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; color: var(--violet); font-size: 1.3rem; line-height: 1; }
+  details[open] summary::after { content: '−'; }
+  details p { color: var(--ink-2); margin-top: 10px; font-size: .97rem; }
+
+  /* ---------- Hecha por TESSEN + pie ---------- */
+  .made { padding: 0 0 88px; }
+  .made-box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 32px 36px; border-radius: 24px; background: var(--surface); border: 1px solid #F0EFEA; box-shadow: 0 1px 2px rgba(36, 35, 56, .04), 0 10px 30px -18px rgba(36, 35, 56, .18); }
+  .made-box .who { display: flex; align-items: center; gap: 18px; }
+  .made-box .tessen-tile { width: 60px; height: 60px; border-radius: 16px; }
+  .made-box h3 { font-family: var(--serif); font-weight: 420; font-size: 1.7rem; letter-spacing: -.02em; line-height: 1.1; }
+  .made-box h3 b { font-family: var(--sans); font-weight: 700; letter-spacing: .14em; font-size: 1.25rem; }
+  .made-box p { color: var(--ink-2); max-width: 520px; margin-top: 6px; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 36px; font-size: .85rem; color: var(--ink-2); }
+  footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+  footer .f-logo { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: .16em; color: var(--ink); }
+  footer .f-logo img { width: 24px; height: 24px; }
+  footer a:hover { color: var(--violet); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="top-logo" aria-label="FOKUS, inicio"><img src="img/fokus-icon.svg" alt="" />FOKUS</a>
+    <nav class="top-nav" aria-label="Secciones">
+      <a href="#funciones">Funciones</a><a href="#privacidad">Privacidad</a><a href="#preguntas">Preguntas</a>
+    </nav>
+    <a href="#descargar" class="top-cta">Descargar gratis</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="brand-row"><div class="brand"><img src="img/fokus-icon.svg" alt="" />FOKUS</div>
+          <a class="by" href="../../index.html"><span class="tessen-tile"><img src="../../assets/tessen/logo-icon.png" alt="" /></span>Hecha por <b>TESSEN</b></a></div>
+        <h1>Study <em>Beautifully.</em></h1>
+        <p class="lead">La app de estudio gratuita que ordena tus clases, tareas y apuntes, y te ayuda a concentrarte de verdad.</p>
+        <div class="actions">
+          <a class="btn btn-primary" data-download href="https://github.com/ParceHD/tessen-web/releases/download/fokus-v1.0.0/FOKUS-Setup-1.0.0.exe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11.5M7 10.5l5 5 5-5M4.5 15v3.5a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V15"/></svg>
+            Descargar para Windows</a>
+          <a class="btn btn-ghost" href="#funciones">Ver cómo funciona</a>
+        </div>
+        <p class="meta">Versión <b data-version>1.0.0</b> · <span data-size>107</span> MB · Windows 10 y 11 (64 bits)</p>
+        <div class="chips">
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Gratis</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Sin cuentas</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Sin anuncios</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Tus datos, en tu ordenador</span>
+        </div>
+      </div>
+      <div class="window"><img src="img/inicio.webp" width="1600" height="1000" alt="Pantalla de inicio de FOKUS con las tareas del día, la agenda y una sesión de enfoque" fetchpriority="high" /></div>
+    </div>
+  </section>
+
+  <!-- FUNCIONES -->
+  <section id="funciones" style="padding-top:40px">
+    <div class="wrap">
+      <div class="feature">
+        <div class="txt">
+          <span class="eyebrow">Tu día</span>
+          <h2>Todo lo de hoy, <em>en un vistazo.</em></h2>
+          <p>FOKUS no es un panel de gráficos: es una agenda que te dice qué toca ahora.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Tareas con prioridad, tiempo estimado y fecha</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Agenda del día con la línea de "ahora"</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Próximo examen o entrega siempre a la vista</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Recordatorios con aviso en Windows</li>
+          </ul>
+        </div>
+        <div class="window"><img src="img/tareas.webp" loading="lazy" width="1600" height="1000" alt="Lista de tareas de FOKUS agrupadas por hoy y próximamente" /></div>
+      </div>
+
+      <div class="feature rev">
+        <div class="txt">
+          <span class="eyebrow">Concentración</span>
+          <h2>25 minutos de <em>foco de verdad.</em></h2>
+          <p>Elige asignatura, pulsa play y deja que el anillo haga el resto.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Pomodoro, modo profundo (50/10) o tus propios tiempos</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Sonido ambiente: lluvia, ruido marrón u olas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Modo inmersivo a pantalla completa</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Cada bloque cuenta en tus estadísticas</li>
+          </ul>
+        </div>
+        <div class="window"><img src="img/concentracion.webp" loading="lazy" width="1600" height="1000" alt="Temporizador de concentración de FOKUS" /></div>
+      </div>
+
+      <div class="feature">
+        <div class="txt">
+          <span class="eyebrow">Organización</span>
+          <h2>Cada asignatura, <em>su color.</em></h2>
+          <p>Clases, exámenes, entregas y bloques de estudio en un calendario semanal y mensual. Tus apuntes y PDFs, ordenados por asignatura.</p>
+        </div>
+        <div class="window"><img src="img/calendario.webp" loading="lazy" width="1600" height="1000" alt="Calendario semanal de FOKUS con las clases por colores" /></div>
+      </div>
+
+      <div class="grid3">
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5A2 2 0 0 1 5.5 5.5h4l2 2.2h7a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg></div><h3>Archivos</h3><p>Añade cualquier documento o arrástralo a la ventana. FOKUS guarda una copia segura.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 16.5V11M12 16.5V6.5M17 16.5v-3.5"/></svg></div><h3>Estadísticas reales</h3><p>Minutos de enfoque por día y por asignatura, racha y tareas hechas.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 14.5A8 8 0 1 1 9.5 4.5a6.5 6.5 0 0 0 10 10z"/></svg></div><h3>Modo noche</h3><p>Día, noche o el modo de tu Windows. Para estudiar de madrugada sin deslumbrarte.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.6 4.4 2.1 5.9 6.5 6.5-4.4.6-5.9 2.1-6.5 6.5-.6-4.4-2.1-5.9-6.5-6.5 4.4-.6 5.9-2.1 6.5-6.5z"/></svg></div><h3>Ligera</h3><p>Modo ahorro de energía activado de serie: casi no consume mientras estudias.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4.5V9h4.5"/></svg></div><h3>Se actualiza sola</h3><p>Te avisa cuando hay versión nueva y se instala solo si tú aceptas.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><h3>Recordatorios</h3><p>Notificaciones de Windows para tus recordatorios y el final de cada bloque.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODO NOCHE -->
+  <section class="night">
+    <div class="wrap feature rev" style="padding:0">
+      <div class="txt">
+        <span class="eyebrow">Modo noche</span>
+        <h2>Igual de bonita <em>a las 2 de la mañana.</em></h2>
+        <p>Un modo oscuro cuidado al detalle, con los mismos colores de tus asignaturas y sin perder legibilidad.</p>
+      </div>
+      <div class="window"><img src="img/concentracion-noche.webp" loading="lazy" width="1600" height="1000" alt="FOKUS en modo noche" /></div>
+    </div>
+  </section>
+
+  <!-- PRIVACIDAD -->
+  <section class="private" id="privacidad">
+    <div class="wrap">
+      <span class="eyebrow">Privacidad y seguridad</span>
+      <h2>Tus cosas, <em>solo tuyas.</em></h2>
+      <p class="sub">FOKUS no tiene cuentas, ni anuncios, ni rastreadores. Todo lo que guardas se queda en tu ordenador.</p>
+      <div class="grid3">
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg></div><h3>Datos en local</h3><p>Tareas, calendario y sesiones se guardan en tu equipo. Puedes exportar una copia cuando quieras.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 19 6v5.5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6z"/></svg></div><h3>Te pide permiso</h3><p>Antes de acceder a tus archivos, FOKUS te pregunta. Solo abre lo que tú eliges y nunca ejecuta programas.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div><h3>Actualizaciones firmadas</h3><p>Cada actualización lleva una firma digital de TESSEN. Si no es auténtica, FOKUS la descarta.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESCARGA -->
+  <section class="download" id="descargar">
+    <div class="wrap">
+      <div class="download-box">
+        <img src="img/fokus-icon.svg" alt="" />
+        <h2>Descarga <em>FOKUS</em></h2>
+        <p class="sub" style="margin:0 auto">Gratis, para Windows 10 y 11 (64 bits).</p>
+        <div class="actions">
+          <a class="btn btn-primary" data-download href="https://github.com/ParceHD/tessen-web/releases/download/fokus-v1.0.0/FOKUS-Setup-1.0.0.exe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11.5M7 10.5l5 5 5-5M4.5 15v3.5a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V15"/></svg>
+            Descargar FOKUS <span data-version>1.0.0</span></a>
+        </div>
+        <p class="meta" style="margin-top:12px"><span data-size>107</span> MB · <span data-date>octubre 2026</span></p>
+        <ol class="steps">
+          <li>Abre el archivo <b>&nbsp;FOKUS-Setup&nbsp;</b> que se ha descargado.</li>
+          <li>Elige dónde instalarla y pulsa «Instalar». No hacen falta permisos de administrador.</li>
+          <li>Abre FOKUS, escribe tu nombre y empieza a estudiar.</li>
+        </ol>
+        <div class="note"><b>Si Windows muestra «Windows protegió su PC»:</b> es el aviso habitual para programas nuevos que aún no tienen reputación en Microsoft. Pulsa «Más información» → «Ejecutar de todas formas». Estamos completando la firma de código de Windows para que deje de aparecer.
+          <details style="margin-top:10px;padding:10px 12px"><summary style="font-size:.85rem">Comprobar el archivo (avanzado)</summary><p>Huella SHA-512 del instalador (base64):</p><p class="hash" data-sha>Se mostrará al publicar la versión.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="preguntas" style="padding-top:20px">
+    <div class="wrap">
+      <h2 style="text-align:center">Preguntas frecuentes</h2>
+      <div class="faq">
+        <details><summary>¿FOKUS es gratis de verdad?</summary><p>Sí. Sin pagos, sin suscripción y sin anuncios.</p></details>
+        <details><summary>¿Funciona en Mac o en el móvil?</summary><p>Por ahora, solo en Windows 10 y 11. Si te interesa en otra plataforma, escríbenos.</p></details>
+        <details><summary>¿Dónde se guardan mis datos?</summary><p>En tu ordenador, en la carpeta de datos de FOKUS. No hay cuentas ni servidores con tu información. Desde Ajustes puedes exportar o importar una copia de seguridad.</p></details>
+        <details><summary>¿Cómo se actualiza?</summary><p>FOKUS comprueba si hay versión nueva y te pregunta. Si aceptas, la descarga, verifica su firma digital y se reinicia ya actualizada. Tus datos se conservan.</p></details>
+        <details><summary>¿Necesita internet?</summary><p>No para usarla. Solo para descargarla y comprobar si hay actualizaciones.</p></details>
+        <details><summary>¿Cómo la desinstalo?</summary><p>Desde Configuración de Windows → Aplicaciones → FOKUS → Desinstalar. Tus datos no se borran, por si la vuelves a instalar.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- HECHA POR TESSEN -->
+  <section class="made">
+    <div class="wrap">
+      <div class="made-box">
+        <div class="who">
+          <span class="tessen-tile"><img src="../../assets/tessen/logo-icon.png" alt="" /></span>
+          <div>
+            <h3>Hecha por <b>TESSEN</b></h3>
+            <p>Diseñamos y construimos webs, apps y automatizaciones a medida. FOKUS es una de nuestras apps.</p>
+          </div>
+        </div>
+        <a class="btn btn-ghost" href="../../index.html">Conocer TESSEN</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="f-logo"><img src="img/fokus-icon.svg" alt="" />FOKUS</span>
+    <a class="by" href="../../index.html"><span class="tessen-tile"><img src="../../assets/tessen/logo-icon.png" alt="" /></span>Hecha por <b>TESSEN</b></a>
+    <span>© 2026 TESSEN · <a href="../../index.html#apps">Más apps</a> · <a href="mailto:tessenconsulting@gmail.com">Contacto</a></span>
+  </div>
+</footer>
+
+<script>
+  // Datos de la última versión publicada (los genera `npm run release` en updates/version.json).
+  fetch('updates/version.json', { cache: 'no-store' }).then((r) => (r.ok ? r.json() : null)).then((v) => {
+    if (!v || !/^\d+\.\d+\.\d+$/.test(v.version) || !/^https:\/\/github\.com\/ParceHD\/tessen-web\/releases\/download\//.test(v.url)) return;
+    document.querySelectorAll('[data-download]').forEach((a) => { a.href = v.url; });
+    document.querySelectorAll('[data-version]').forEach((e) => { e.textContent = v.version; });
+    document.querySelectorAll('[data-size]').forEach((e) => { e.textContent = v.sizeMB; });
+    const d = new Date(v.date);
+    if (!isNaN(d)) document.querySelectorAll('[data-date]').forEach((e) => { e.textContent = d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }); });
+    if (v.sha512) document.querySelectorAll('[data-sha]').forEach((e) => { e.textContent = v.sha512; });
+  }).catch(() => {});
+</script>
+</body>
+</html>

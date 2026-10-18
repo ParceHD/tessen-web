@@ -16,4 +16,8 @@
     <loc>https://tessenconsulting.com/web-tessen-automatizaciones.html</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://tessenconsulting.com/apps/fokus/</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>

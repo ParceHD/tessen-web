@@ -228,7 +228,7 @@
       overflow: hidden;
       transition: max-height 0.35s ease;
     }
-    .nav-links.open { max-height: 320px; }
+    .nav-links.open { max-height: 400px; }
     .nav-links a { padding: 18px 24px; border-bottom: 1px solid var(--border); width: 100%; }
     .nav-links .nav-cta-mobile { display: block; padding: 18px 24px; }
   }
@@ -467,6 +467,31 @@
   }
 
 
+  /* ---------- Apps ---------- */
+  .apps { background: var(--black-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; }
+  .apps .grid-bg { -webkit-mask-image: radial-gradient(ellipse 60% 70% at 80% 50%, #000 20%, transparent 80%); mask-image: radial-gradient(ellipse 60% 70% at 80% 50%, #000 20%, transparent 80%); }
+  .apps .wrap { position: relative; z-index: 1; }
+  .app-card {
+    display: grid; grid-template-columns: 1fr; gap: 0; overflow: hidden;
+    background: var(--card); border: 1px solid var(--border); border-radius: 26px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .app-card:hover { transform: translateY(-6px); border-color: var(--lime); box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+  @media (min-width: 900px) { .app-card { grid-template-columns: 0.9fr 1.1fr; } }
+  .app-info { padding: 44px 40px; display: flex; flex-direction: column; gap: 18px; }
+  .app-head { display: flex; align-items: center; gap: 16px; }
+  .app-head img { width: 58px; height: 58px; border-radius: 16px; }
+  .app-head h3 { font-size: 1.6rem; letter-spacing: 0.12em; font-weight: 600; }
+  .app-head span { display: block; font-size: 0.82rem; color: var(--gray-light); opacity: 0.6; letter-spacing: 0.04em; }
+  .app-info > p { color: var(--gray-light); opacity: 0.78; font-size: 1rem; }
+  .app-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .app-tags li { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-light); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; }
+  .app-info .service-cta { border-top: 1px solid var(--border); }
+  .app-card:hover .service-cta { color: var(--lime); gap: 12px; }
+  .app-shot { position: relative; min-height: 260px; background: #F7F7F4; overflow: hidden; }
+  .app-shot img { position: absolute; left: 6%; top: 10%; width: 120%; max-width: none; border-radius: 14px; box-shadow: 0 30px 70px -20px rgba(0,0,0,0.55); }
+  .apps-note { margin-top: 28px; color: var(--gray-light); opacity: 0.6; font-size: 0.92rem; }
+
   /* ---------- Contacto ---------- */
   .contact-grid {
     display: grid;
@@ -607,6 +632,7 @@
       <li><a href="#about">Quiénes somos</a></li>
       <li><a href="#metodo">Principios</a></li>
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#apps">Apps</a></li>
       <li><a href="#contacto">Contacto</a></li>
       <li class="nav-cta-mobile"><a href="#contacto" class="btn btn-primary">Hablemos</a></li>
     </ul>
@@ -774,6 +800,32 @@
     </div>
   </section>
 
+  <!-- APPS -->
+  <section class="apps" id="apps">
+    <div class="grid-bg"></div>
+    <div class="wrap">
+      <span class="eyebrow reveal">Apps</span>
+      <h2 class="section-title reveal">Productos propios</h2>
+      <p class="section-sub reveal">Además de construir sistemas para nuestros clientes, creamos nuestras propias apps. Diseño cuidado, privacidad por defecto y gratis para empezar.</p>
+
+      <a href="apps/fokus/index.html" class="app-card reveal">
+        <div class="app-info">
+          <div class="app-head">
+            <img src="apps/fokus/img/fokus-icon.svg" alt="" />
+            <div><h3>FOKUS</h3><span>Study Beautifully</span></div>
+          </div>
+          <p>App de estudio para Windows: agenda del día, tareas, calendario, asignaturas y un temporizador de concentración. Sin cuentas ni anuncios, y tus datos se quedan en tu ordenador.</p>
+          <ul class="app-tags"><li>Gratis</li><li>Windows</li><li>Estudio y productividad</li></ul>
+          <span class="service-cta">Descubrir y descargar FOKUS
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </span>
+        </div>
+        <div class="app-shot"><img src="apps/fokus/img/inicio.webp" alt="Pantalla de inicio de FOKUS" loading="lazy" /></div>
+      </a>
+      <p class="apps-note reveal">¿Quieres una app así para tu negocio? <a href="#contacto" style="color:var(--lime)">Cuéntanos tu idea</a>.</p>
+    </div>
+  </section>
+
   <!-- CONTACTO -->
   <section id="contacto">
     <div class="wrap contact-grid">
@@ -829,6 +881,7 @@
       <li><a href="#about">Quiénes somos</a></li>
       <li><a href="#metodo">Principios</a></li>
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#apps">Apps</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="footer-copy">© 2026 TESSEN — AI &amp; Automation Consulting</div>
