@@ -1,0 +1,223 @@
+/* =========================================================
+   FOKUS · Design tokens — "Study Beautifully"
+   Fuente única de verdad. Cualquier color, radio, sombra o
+   tamaño de la app y del material de marketing sale de aquí.
+   ========================================================= */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../vendor/fonts/inter-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../vendor/fonts/inter-latin-ext-wght-normal.woff2') format('woff2');
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../vendor/fonts/fraunces-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../vendor/fonts/fraunces-latin-wght-italic.woff2') format('woff2');
+  font-weight: 100 900; font-style: italic; font-display: swap;
+}
+
+:root {
+  /* --- Marca --- */
+  --violet-50:  #F4F2FE;
+  --violet-100: #EAE6FD;
+  --violet-200: #D5CDFA;
+  --violet-300: #B7ABF5;
+  --violet-400: #9283EF;
+  --violet-500: #6D5CE8;   /* Primario FOKUS */
+  --violet-600: #5B49D8;
+  --violet-700: #4A3AB5;
+  --violet-800: #392D8A;
+
+  --brand: var(--violet-500);
+  --brand-hover: var(--violet-600);
+  --brand-press: var(--violet-700);
+  --brand-soft: var(--violet-50);
+  --brand-tint: var(--violet-100);
+  --on-brand: #FFFFFF;
+
+  /* --- Neutros (marfil cálido) --- */
+  --bg: #F7F7F4;           /* Fondo de la app */
+  --surface: #FFFFFF;      /* Tarjetas */
+  --surface-2: #FBFBF9;    /* Superficie hundida / hover suave */
+  --surface-3: #F1F1EC;    /* Campos, pistas de progreso */
+  --line: #E8E7E1;
+  --line-soft: #F0EFEA;
+
+  --ink: #242338;          /* Texto principal */
+  --ink-2: #5C5A70;        /* Texto secundario (AA sobre blanco y marfil) */
+  --ink-3: #8A889C;        /* Pistas, placeholders, metadatos grandes */
+  --ink-inverse: #FFFFFF;
+
+  /* --- Asignaturas y categorías (único uso permitido del pastel) ---
+     -bg: relleno de tarjeta/chip · -ink: texto sobre -bg (AA) · -dot: marca de identidad */
+  --s-lavanda-bg: #EEEBFD;   --s-lavanda-ink: #4A3AB5;   --s-lavanda-dot: #A396F2;
+  --s-melocoton-bg: #FDEEE4; --s-melocoton-ink: #8E431C; --s-melocoton-dot: #F0A97F;
+  --s-menta-bg: #E3F4EB;     --s-menta-ink: #1F6845;     --s-menta-dot: #7FCBA4;
+  --s-cielo-bg: #E4EFFA;     --s-cielo-ink: #22598A;     --s-cielo-dot: #86B8E6;
+  --s-rosa-bg: #FCE9F0;      --s-rosa-ink: #93304F;      --s-rosa-dot: #EC9DB9;
+  --s-mantequilla-bg: #FBF3DA; --s-mantequilla-ink: #6F540C; --s-mantequilla-dot: #E2C35C;
+  --s-salvia-bg: #EBF1E5;    --s-salvia-ink: #46602D;    --s-salvia-dot: #A5BF89;
+  --s-lila-bg: #F5E9FA;      --s-lila-ink: #74308E;      --s-lila-dot: #CE9BE2;
+
+  /* --- Estados (reservados; siempre con icono o texto) --- */
+  --ok: #2E8B57;
+  --danger: #C2413A;
+  --danger-soft: #FCEDEC;
+
+  /* --- Tipografía --- */
+  --font-ui: 'Inter', 'Segoe UI Variable Text', 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-num: 'Inter', system-ui, sans-serif;
+
+  --fs-xs: 12px;     /* solo etiquetas en mayúsculas espaciadas */
+  --fs-sm: 13px;     /* metadatos */
+  --fs-md: 14px;     /* cuerpo UI */
+  --fs-lg: 16px;     /* cuerpo destacado / títulos de tarjeta */
+  --fs-xl: 20px;     /* títulos de sección */
+  --fs-2xl: 28px;    /* títulos de página */
+  --fs-3xl: 40px;    /* saludo / display */
+  --fs-timer: 88px;  /* temporizador */
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-body: 1.5;
+
+  /* --- Espaciado (base 4) --- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px;
+
+  /* --- Radios --- */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* --- Sombras (muy suaves, tinte tinta) --- */
+  --shadow-xs: 0 1px 2px rgba(36, 35, 56, .05);
+  --shadow-sm: 0 1px 2px rgba(36, 35, 56, .04), 0 4px 14px -6px rgba(36, 35, 56, .08);
+  --shadow-md: 0 2px 4px rgba(36, 35, 56, .04), 0 16px 40px -18px rgba(36, 35, 56, .18);
+  --shadow-lg: 0 4px 10px rgba(36, 35, 56, .05), 0 30px 70px -28px rgba(36, 35, 56, .28);
+  --shadow-brand: 0 10px 30px -10px rgba(109, 92, 232, .55);
+  --ring: 0 0 0 3px rgba(109, 92, 232, .22);
+
+  /* --- Movimiento --- */
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --ease-spring: cubic-bezier(.34, 1.4, .5, 1);
+  --t-fast: 120ms;
+  --t-base: 200ms;
+  --t-slow: 420ms;
+
+  /* --- Layout --- */
+  --sidebar-w: 236px;
+  --topbar-h: 64px;
+  --titlebar-safe: 140px; /* hueco para los botones de ventana de Windows */
+
+  /* --- Tokens que cambian con el tema --- */
+  --brand-text: var(--violet-500);   /* violeta usado como texto o icono */
+  --brand-ink: var(--violet-700);    /* texto sobre --brand-soft */
+  --glass: rgba(255, 255, 255, .8);  /* superficies flotantes de Concentración */
+  --glass-hover: #FFFFFF;
+  --glass-edge: rgba(255, 255, 255, .9);
+  --calm-1: rgba(213, 205, 250, .55);
+  --calm-2: rgba(253, 238, 228, .9);
+  --calm-3: rgba(234, 230, 253, .9);
+  --horizon: rgba(255, 255, 255, .75);
+  --ring-track: rgba(109, 92, 232, .12);
+  --scroll-thumb: #DDDCD5;
+  --check-line: #CFCDC6;
+  --switch-off: #DCDBD4;
+  --scrim: rgba(36, 35, 56, .22);
+  --toast-bg: #242338;
+  --art-hi: #FFFFFF;
+  --danger-soft-hover: #F9DEDC;
+  --fi-pdf-bg: #FCEDEC;   --fi-pdf-ink: #A8362F;
+  --fi-doc-bg: #E6EEFB;   --fi-doc-ink: #2856A0;
+  --fi-img-bg: #E3F4EB;   --fi-img-ink: #1F6845;
+  --fi-sheet-bg: #E7F3E0; --fi-sheet-ink: #3C6B23;
+  --fi-slide-bg: #FDEEE4; --fi-slide-ink: #8E431C;
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%235C5A70' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  color-scheme: light;
+}
+
+/* =========================================================
+   Modo noche — mismo sistema, superficies tinta profunda.
+   Se activa con <html data-theme="dark"> (Ajustes → Apariencia).
+   ========================================================= */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --brand-hover: #7B6BF0;
+  --brand-text: #A99DF8;
+  --brand-ink: #D2CBFC;
+  --brand-soft: rgba(124, 108, 240, .16);
+  --brand-tint: rgba(124, 108, 240, .28);
+
+  --bg: #121119;
+  --surface: #1B1A25;
+  --surface-2: #201F2C;
+  --surface-3: #292838;
+  --line: #312F42;
+  --line-soft: #262534;
+
+  --ink: #EDECF6;
+  --ink-2: #ABA9C0;
+  --ink-3: #7F7D96;
+
+  --s-lavanda-bg: rgba(163, 150, 242, .16);    --s-lavanda-ink: #CFC7FB;
+  --s-melocoton-bg: rgba(240, 169, 127, .15);  --s-melocoton-ink: #F7C9AC;
+  --s-menta-bg: rgba(127, 203, 164, .15);      --s-menta-ink: #A9E2C4;
+  --s-cielo-bg: rgba(134, 184, 230, .15);      --s-cielo-ink: #B5D5F2;
+  --s-rosa-bg: rgba(236, 157, 185, .15);       --s-rosa-ink: #F5C2D4;
+  --s-mantequilla-bg: rgba(226, 195, 92, .14); --s-mantequilla-ink: #EDD98F;
+  --s-salvia-bg: rgba(165, 191, 137, .15);     --s-salvia-ink: #C8DAB3;
+  --s-lila-bg: rgba(206, 155, 226, .15);       --s-lila-ink: #E3C2EF;
+
+  --ok: #5BC48A;
+  --danger: #F07A72;
+  --danger-soft: rgba(240, 122, 114, .14);
+  --danger-soft-hover: rgba(240, 122, 114, .22);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .35);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px -6px rgba(0, 0, 0, .45);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, .3), 0 16px 40px -18px rgba(0, 0, 0, .65);
+  --shadow-lg: 0 4px 10px rgba(0, 0, 0, .35), 0 30px 70px -28px rgba(0, 0, 0, .75);
+  --shadow-brand: 0 10px 30px -12px rgba(109, 92, 232, .6);
+  --ring: 0 0 0 3px rgba(169, 157, 248, .35);
+
+  --glass: rgba(32, 31, 44, .8);
+  --glass-hover: #2A2939;
+  --glass-edge: rgba(255, 255, 255, .06);
+  --calm-1: rgba(109, 92, 232, .22);
+  --calm-2: rgba(240, 169, 127, .07);
+  --calm-3: rgba(109, 92, 232, .14);
+  --horizon: rgba(255, 255, 255, .035);
+  --ring-track: rgba(124, 108, 240, .2);
+  --scroll-thumb: #34334A;
+  --check-line: #4A4860;
+  --switch-off: #3A3950;
+  --scrim: rgba(5, 5, 10, .55);
+  --toast-bg: #2E2D41;
+  --art-hi: rgba(255, 255, 255, .3);
+  --fi-pdf-bg: rgba(240, 122, 114, .15);  --fi-pdf-ink: #F5A39D;
+  --fi-doc-bg: rgba(134, 184, 230, .15);  --fi-doc-ink: #B5D5F2;
+  --fi-img-bg: rgba(127, 203, 164, .15);  --fi-img-ink: #A9E2C4;
+  --fi-sheet-bg: rgba(165, 191, 137, .15); --fi-sheet-ink: #C8DAB3;
+  --fi-slide-bg: rgba(240, 169, 127, .15); --fi-slide-ink: #F7C9AC;
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23ABA9C0' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --t-fast: 0ms; --t-base: 0ms; --t-slow: 0ms; }
+}

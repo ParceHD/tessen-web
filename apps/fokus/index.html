@@ -26,7 +26,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "FOKUS",
-  "operatingSystem": "Windows 10, Windows 11",
+  "operatingSystem": "Windows 10, Windows 11, iOS, Android",
   "applicationCategory": "EducationalApplication",
   "description": "App de estudio gratuita: agenda del día, tareas, calendario, asignaturas y temporizador de concentración.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
@@ -60,6 +60,11 @@
   .top-nav a:hover { color: var(--violet); }
   .top-cta { display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 11px; background: var(--violet); color: #fff; font-weight: 600; font-size: .9rem; white-space: nowrap; }
   .top-cta:hover { background: var(--violet-600); }
+  .top-actions { display: flex; align-items: center; gap: 10px; }
+  .top-mobile { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border-radius: 11px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-weight: 600; font-size: .9rem; white-space: nowrap; }
+  .top-mobile svg { width: 17px; height: 17px; color: var(--violet); }
+  .top-mobile:hover { border-color: #c9c2f6; color: var(--violet); }
+  @media (max-width: 520px) { .top-mobile { display: none; } }
   @media (max-width: 760px) { .top-nav { display: none; } }
 
   /* ---------- Sello "Hecha por TESSEN" ---------- */
@@ -124,14 +129,28 @@
   .night .window { border-color: rgba(255, 255, 255, .06); box-shadow: 0 40px 90px -36px rgba(0, 0, 0, .8); }
   .private { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
+  /* ---------- Móvil ---------- */
+  .mob-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+  @media (min-width: 900px) { .mob-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(240px, 0.8fr); } }
+  .mob-qr .btn { white-space: normal; height: auto; min-height: 50px; padding: 12px 20px; text-align: center; }
+  .mob-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .mob-head .ico { margin: 0; }
+  .mob-card .steps { margin-top: 12px; }
+  .mob-qr { display: grid; justify-items: center; text-align: center; gap: 12px; align-content: center; }
+  .mob-qr img { width: 168px; height: 168px; border-radius: 12px; border: 1px solid var(--line); }
+  .mob-qr p { color: var(--ink-2); font-size: .92rem; }
+  @media (max-width: 899px) { .mob-qr img, .mob-qr p { display: none; } }
+
   /* ---------- Descarga ---------- */
   .download { text-align: center; }
   .download-box { max-width: 720px; margin: 0 auto; background: var(--surface); border-radius: 28px; padding: 48px 32px; box-shadow: 0 2px 6px rgba(36, 35, 56, .05), 0 40px 90px -40px rgba(36, 35, 56, .35); border: 1px solid #F0EFEA; }
   .download-box img { width: 84px; height: 84px; margin: 0 auto 18px; }
   .download-box .actions { justify-content: center; margin-top: 24px; }
   .steps { text-align: left; margin: 28px auto 0; max-width: 520px; display: grid; gap: 10px; counter-reset: s; }
-  .steps li { list-style: none; display: flex; gap: 12px; font-size: .95rem; color: var(--ink-2); }
-  .steps li::before { counter-increment: s; content: counter(s); width: 24px; height: 24px; border-radius: 50%; background: var(--violet-50); color: var(--violet); font-weight: 700; font-size: .8rem; display: grid; place-items: center; flex: none; }
+  [hidden] { display: none !important; }
+  .steps li { list-style: none; position: relative; padding-left: 36px; min-height: 24px; font-size: .95rem; color: var(--ink-2); }
+  .steps li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--violet-50); color: var(--violet); font-weight: 700; font-size: .8rem; display: grid; place-items: center; }
+  .steps b { color: var(--ink); }
   .note { margin: 22px auto 0; max-width: 560px; text-align: left; font-size: .88rem; color: var(--ink-2); background: var(--bg); border-radius: 14px; padding: 14px 16px; border: 1px solid var(--line); }
   .note b { color: var(--ink); }
   .hash { font-family: ui-monospace, Consolas, monospace; font-size: .72rem; word-break: break-all; color: var(--ink-2); }
@@ -166,9 +185,12 @@
   <div class="wrap">
     <a href="#" class="top-logo" aria-label="FOKUS, inicio"><img src="img/fokus-icon.svg" alt="" />FOKUS</a>
     <nav class="top-nav" aria-label="Secciones">
-      <a href="#funciones">Funciones</a><a href="#privacidad">Privacidad</a><a href="#preguntas">Preguntas</a>
+      <a href="#funciones">Funciones</a><a href="#movil">Móvil</a><a href="#privacidad">Privacidad</a><a href="#preguntas">Preguntas</a>
     </nav>
-    <a href="#descargar" class="top-cta">Descargar gratis</a>
+    <div class="top-actions">
+      <a href="app/" class="top-mobile" data-top-mobile><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>Versión para móvil</a>
+      <a href="#descargar" class="top-cta">Descargar gratis</a>
+    </div>
   </div>
 </header>
 
@@ -182,12 +204,17 @@
         <h1>Study <em>Beautifully.</em></h1>
         <p class="lead">La app de estudio gratuita que ordena tus clases, tareas y apuntes, y te ayuda a concentrarte de verdad.</p>
         <div class="actions">
+          <a class="btn btn-primary" data-mobile-cta href="app/" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+            Usar FOKUS en el móvil</a>
           <a class="btn btn-primary" data-download href="https://github.com/ParceHD/tessen-web/releases/download/fokus-v1.0.0/FOKUS-Setup-1.0.0.exe">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11.5M7 10.5l5 5 5-5M4.5 15v3.5a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V15"/></svg>
             Descargar para Windows</a>
-          <a class="btn btn-ghost" href="#funciones">Ver cómo funciona</a>
+          <a class="btn btn-ghost" data-secondary href="app/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+            Versión para móvil</a>
         </div>
-        <p class="meta">Versión <b data-version>1.0.0</b> · <span data-size>107</span> MB · Windows 10 y 11 (64 bits)</p>
+        <p class="meta" data-meta>Versión <b data-version>1.0.0</b> · <span data-size>107</span> MB · Windows 10 y 11 (64 bits) · También en iPhone y Android</p>
         <div class="chips">
           <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Gratis</span>
           <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Sin cuentas</span>
@@ -264,6 +291,39 @@
     </div>
   </section>
 
+  <!-- MÓVIL -->
+  <section id="movil">
+    <div class="wrap">
+      <span class="eyebrow">iPhone y Android</span>
+      <h2>FOKUS, también <em>en tu móvil.</em></h2>
+      <p class="sub">Sin tiendas de apps: se instala desde aquí en segundos, se abre a pantalla completa con su propio icono y funciona sin conexión. Gratis, igual que en el ordenador.</p>
+      <div class="mob-grid">
+        <div class="card mob-card">
+          <div class="mob-head"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.3 2.8 2.3 1.1 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.7-2.2c.9-1.3 1.2-2.5 1.2-2.6 0 0-2.3-.9-2.3-3.6zM14.2 5.6c.6-.8 1-1.8.9-2.8-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.7 1 .1 2-.5 2.6-1.3z"/></svg></span><h3>En iPhone</h3></div>
+          <ol class="steps">
+            <li>Abre <b>tessenconsulting.com/apps/fokus/app</b> en <b>Safari</b>.</li>
+            <li>Pulsa el botón <b>Compartir</b> (el cuadrado con la flecha hacia arriba).</li>
+            <li>Elige <b>«Añadir a pantalla de inicio»</b> y confirma.</li>
+          </ol>
+        </div>
+        <div class="card mob-card">
+          <div class="mob-head"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18a1 1 0 0 0 1 1h1v3a1.5 1.5 0 0 0 3 0v-3h2v3a1.5 1.5 0 0 0 3 0v-3h1a1 1 0 0 0 1-1V8H6zM3.5 8A1.5 1.5 0 0 0 2 9.5v7a1.5 1.5 0 0 0 3 0v-7A1.5 1.5 0 0 0 3.5 8zm17 0A1.5 1.5 0 0 0 19 9.5v7a1.5 1.5 0 0 0 3 0v-7A1.5 1.5 0 0 0 20.5 8zM15.5 2.2l1.3-1.3a.5.5 0 0 0-.7-.7l-1.5 1.5A6.6 6.6 0 0 0 12 1.2c-.9 0-1.8.2-2.6.5L7.9.2a.5.5 0 0 0-.7.7l1.3 1.3A5.9 5.9 0 0 0 6 7h12a5.9 5.9 0 0 0-2.5-4.8zM10 5H9V4h1zm5 0h-1V4h1z"/></svg></span><h3>En Android</h3></div>
+          <ol class="steps">
+            <li>Abre <b>tessenconsulting.com/apps/fokus/app</b> en <b>Chrome</b>.</li>
+            <li>Pulsa <b>«Instalar»</b> en el aviso de FOKUS (o en el menú ⋮ → «Instalar aplicación»).</li>
+            <li>Listo: FOKUS aparece con el resto de tus apps.</li>
+          </ol>
+        </div>
+        <div class="card mob-card mob-qr">
+          <img src="img/qr-app.svg" alt="Código QR para abrir FOKUS en el móvil" width="168" height="168" />
+          <p><b>¿Estás en el ordenador?</b><br>Escanea el código con la cámara del móvil.</p>
+          <a class="btn btn-primary" href="app/">Abrir FOKUS para móvil</a>
+        </div>
+      </div>
+      <p class="note" style="margin:22px 0 0;max-width:none"><b>Bueno saberlo:</b> en el móvil tus datos se guardan en ese dispositivo (no se sincronizan con el ordenador). En iPhone, el aviso de fin de bloque solo suena con la app abierta; por eso, mientras el temporizador está en marcha, FOKUS mantiene la pantalla encendida.</p>
+    </div>
+  </section>
+
   <!-- PRIVACIDAD -->
   <section class="private" id="privacidad">
     <div class="wrap">
@@ -292,7 +352,7 @@
         </div>
         <p class="meta" style="margin-top:12px"><span data-size>107</span> MB · <span data-date>octubre 2026</span></p>
         <ol class="steps">
-          <li>Abre el archivo <b>&nbsp;FOKUS-Setup&nbsp;</b> que se ha descargado.</li>
+          <li>Abre el archivo <b>FOKUS-Setup</b> que se ha descargado.</li>
           <li>Elige dónde instalarla y pulsa «Instalar». No hacen falta permisos de administrador.</li>
           <li>Abre FOKUS, escribe tu nombre y empieza a estudiar.</li>
         </ol>
@@ -309,7 +369,8 @@
       <h2 style="text-align:center">Preguntas frecuentes</h2>
       <div class="faq">
         <details><summary>¿FOKUS es gratis de verdad?</summary><p>Sí. Sin pagos, sin suscripción y sin anuncios.</p></details>
-        <details><summary>¿Funciona en Mac o en el móvil?</summary><p>Por ahora, solo en Windows 10 y 11. Si te interesa en otra plataforma, escríbenos.</p></details>
+        <details><summary>¿Funciona en el móvil o en Mac?</summary><p>Sí. En iPhone y Android, instala la versión para móvil desde esta página (sección «En tu móvil»): no necesita tienda de apps. En Mac puedes usar esa misma versión desde Safari o Chrome. La versión para descargar es para Windows 10 y 11.</p></details>
+        <details><summary>¿Se sincronizan el móvil y el ordenador?</summary><p>Todavía no. Cada dispositivo guarda sus propios datos. Puedes pasar tus datos de uno a otro con «Exportar» e «Importar» copia en Ajustes.</p></details>
         <details><summary>¿Dónde se guardan mis datos?</summary><p>En tu ordenador, en la carpeta de datos de FOKUS. No hay cuentas ni servidores con tu información. Desde Ajustes puedes exportar o importar una copia de seguridad.</p></details>
         <details><summary>¿Cómo se actualiza?</summary><p>FOKUS comprueba si hay versión nueva y te pregunta. Si aceptas, la descarga, verifica su firma digital y se reinicia ya actualizada. Tus datos se conservan.</p></details>
         <details><summary>¿Necesita internet?</summary><p>No para usarla. Solo para descargarla y comprobar si hay actualizaciones.</p></details>
@@ -344,6 +405,16 @@
 </footer>
 
 <script>
+  // En el móvil, el botón principal lleva a la app para móvil.
+  if (/android|iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+    document.querySelector('[data-mobile-cta]').hidden = false;
+    const dl = document.querySelector('.hero [data-download]');
+    dl.classList.replace('btn-primary', 'btn-ghost'); dl.lastChild.textContent = ' Versión para Windows';
+    document.querySelector('.hero [data-secondary]').hidden = true;
+    document.querySelector('.top-cta').setAttribute('href', 'app/'); document.querySelector('.top-cta').textContent = 'Abrir FOKUS';
+    document.querySelector('[data-top-mobile]').hidden = true;
+  }
+
   // Datos de la última versión publicada (los genera `npm run release` en updates/version.json).
   fetch('updates/version.json', { cache: 'no-store' }).then((r) => (r.ok ? r.json() : null)).then((v) => {
     if (!v || !/^\d+\.\d+\.\d+$/.test(v.version) || !/^https:\/\/github\.com\/ParceHD\/tessen-web\/releases\/download\//.test(v.url)) return;

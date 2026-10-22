@@ -1,0 +1,155 @@
+/* =========================================================
+   FOKUS · Diseño móvil (iPhone / Android)
+   Solo se activa en pantallas estrechas; el escritorio no cambia.
+   ========================================================= */
+
+.tabbar, .more-sheet, .install-tip { display: none; }
+
+@media (max-width: 760px) {
+  :root { --topbar-h: 56px; --tabbar-h: 64px; }
+  body { -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+  input, select, textarea, .input, .select, .textarea { font-size: 16px; } /* evita el zoom automático de iOS */
+
+  .app { grid-template-columns: 1fr; height: 100dvh; }
+  .sidebar { display: none; }
+  .main { height: 100dvh; }
+
+  /* Barra superior compacta */
+  .topbar { height: auto; min-height: var(--topbar-h); padding: calc(env(safe-area-inset-top) + 8px) 16px 8px; gap: 10px; -webkit-app-region: no-drag; }
+  .topbar .today, .search kbd { display: none; }
+  .topbar .m-logo { display: flex; align-items: center; flex: none; }
+  .search { width: auto; flex: 1; }
+  .search .input { height: 40px; }
+  .search-results { position: fixed; left: 12px; right: 12px; top: calc(env(safe-area-inset-top) + 60px); }
+
+  .view { padding: 4px 16px calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 24px); }
+
+  /* Barra de pestañas inferior */
+  .tabbar {
+    display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    height: calc(var(--tabbar-h) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom);
+    background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(16px) saturate(1.3);
+    border-top: 1px solid var(--line);
+  }
+  .tabbar button {
+    border: 0; background: none; color: var(--ink-2); display: grid; justify-items: center; align-content: center; gap: 3px;
+    font-size: 11px; font-weight: 600; letter-spacing: .01em; position: relative;
+  }
+  .tabbar button svg { width: 23px; height: 23px; }
+  .tabbar button.on { color: var(--brand-text); }
+  .tabbar .tab-timer { position: absolute; top: 6px; left: 50%; transform: translateX(4px); font-size: 10px; font-weight: 700; color: #fff; background: var(--brand); border-radius: 999px; padding: 1px 6px; font-variant-numeric: tabular-nums; }
+
+  /* Hoja "Más" */
+  .more-sheet.open { display: block; position: fixed; inset: 0; z-index: 45; background: var(--scrim); animation: fade var(--t-base) var(--ease); }
+  .more-sheet .sheet {
+    position: absolute; left: 0; right: 0; bottom: 0; background: var(--surface); border-radius: 22px 22px 0 0;
+    padding: 10px 16px calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 12px); box-shadow: var(--shadow-lg); animation: sheetUp var(--t-slow) var(--ease);
+  }
+  .more-sheet .grab { width: 40px; height: 5px; border-radius: 3px; background: var(--line); margin: 0 auto 12px; }
+  .more-sheet a { display: flex; align-items: center; gap: 14px; height: 54px; padding: 0 8px; border-radius: 12px; font-weight: 560; color: var(--ink); text-decoration: none; }
+  .more-sheet a svg { width: 22px; height: 22px; color: var(--brand-text); }
+  .more-sheet a:active { background: var(--surface-3); }
+  @keyframes sheetUp { from { transform: translateY(100%); } }
+
+  /* Titulares y cabeceras */
+  .t-display { font-size: 30px; }
+  .t-title { font-size: 24px; }
+  .page-head { flex-direction: column; align-items: stretch; gap: 12px; margin: 4px 0 16px; }
+  .page-actions .btn { width: 100%; }
+  .hello { grid-template-columns: 1fr; gap: 6px; margin: 4px 0 16px; }
+  .hello p { font-size: var(--fs-md); }
+  .hello .t-quote { display: none; }
+
+  /* Inicio */
+  .kpis { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kpi-focus { grid-column: 1 / -1; }
+  .kpi { padding: 14px; gap: 10px; }
+  .kpi .ico { width: 36px; height: 36px; }
+  .kpi b { font-size: 15px; }
+  .kpi .bar { width: 100%; }
+  .card { padding: 16px; border-radius: 18px; }
+  .home-grid, .home-col { gap: 14px; }
+
+  /* Tareas: sin columna de tiempo ni botón de editar (se edita tocando la fila) */
+  .task { grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; padding: 12px 4px; }
+  .task .est, .task .icon-btn { display: none; }
+  .check { width: 26px; height: 26px; }
+  .toolbar { gap: 8px; }
+  .toolbar .seg { width: 100%; overflow-x: auto; }
+  .toolbar .seg button { flex: 1; padding: 0 8px; }
+  .toolbar .select, .toolbar .search { width: 100% !important; }
+
+  /* Calendario */
+  .cal-head, .cal-body { grid-template-columns: 44px repeat(var(--cal-days, 7), 1fr); }
+  .cal-body { max-height: calc(100dvh - 300px); }
+  .cal-hours div { font-size: 10px; padding-right: 6px; }
+  .cal-ev { left: 2px; right: 2px; padding: 4px 6px; font-size: 12px; }
+  .month-cell { min-height: 58px; padding: 4px; }
+  .month-ev { font-size: 0; height: 6px; width: 6px; padding: 0; border-radius: 50%; background: var(--sdot); display: inline-block; }
+  .month-dow { padding: 8px 4px; text-align: center; }
+
+  /* Asignaturas y archivos */
+  .subjects { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .subject-art { height: 80px; }
+  .subject-body { padding: 12px; }
+  .subject-stats { font-size: 12px; }
+  .file-row { grid-template-columns: 40px minmax(0, 1fr) auto; }
+  .file-row > :nth-child(3), .file-row > :nth-child(4), .file-row > :nth-child(5), .file-row.head { display: none; }
+  .file-row .actions { opacity: 1; }
+  .drop-hint { display: none; }
+
+  /* Concentración */
+  .focus-screen { margin: -4px -16px calc(-1 * (var(--tabbar-h) + env(safe-area-inset-bottom) + 24px)); padding: 16px 16px calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 24px); }
+  .focus-top .seg { max-width: calc(100vw - 80px); overflow-x: auto; }
+  .focus-top .seg button { padding: 0 10px; }
+  .ring { width: min(78vw, 300px); height: min(78vw, 300px); }
+  .ring .face { inset: 9%; }
+  .ring .time { font-size: clamp(52px, 17vw, 72px); }
+  .focus-side { position: static; transform: none; width: 100%; grid-auto-flow: row; margin-top: 18px; }
+  .focus-bottom { display: none; }
+  .play-btn { width: 84px; height: 84px; }
+
+  /* Estadísticas y ajustes */
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat b { font-size: 22px; }
+  .bars { gap: 8px; height: 180px; }
+  .hbar { grid-template-columns: 96px 1fr 56px; }
+  .set-row { flex-wrap: wrap; }
+  .set-row > div:first-child { flex-basis: 100%; }
+  .set-row .input[data-name] { width: 100% !important; }
+  .about-card { flex-direction: column; align-items: stretch; }
+
+  /* Ventanas emergentes como hoja inferior */
+  .overlay { place-items: end stretch; }
+  .modal { width: 100%; max-height: 92dvh; border-radius: 24px 24px 0 0; padding: 22px 18px calc(env(safe-area-inset-bottom) + 18px); animation: sheetUp var(--t-slow) var(--ease); }
+  .row, .row-3 { grid-template-columns: 1fr; }
+  .modal-actions { flex-wrap: wrap; }
+  .modal-actions .btn { flex: 1; }
+  .toasts { bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 12px); width: calc(100vw - 32px); }
+  .toast { justify-content: center; }
+
+  /* Bienvenida */
+  .onboard { padding: 24px; }
+
+  /* Retoques de densidad */
+  .toolbar .seg button { white-space: nowrap; font-size: 13px; }
+  .focus-top .seg button { white-space: nowrap; font-size: 13px; }
+  .focus-top .seg button svg { display: none; }
+  .focus-top [data-act=zen] { display: none; }
+  .subject-stats span:first-child { display: none; }
+  .subject-stats { justify-content: flex-end; }
+
+  /* Hoja "Más" encima de la barra de pestañas (que sigue visible) */
+  .more-sheet.open { inset: 0 0 calc(var(--tabbar-h) + env(safe-area-inset-bottom)) 0; }
+  .more-sheet .sheet { padding-bottom: 12px; }
+
+  /* Consejo para instalar la app (solo app web, solo en Inicio) */
+  body:not([data-view="inicio"]) .install-tip.show { display: none; }
+  .install-tip.show {
+    display: flex; gap: 10px; align-items: center; padding: 10px 12px; margin: 0 16px 10px; border-radius: 14px;
+    background: var(--brand-soft); color: var(--brand-ink); font-size: 13px; line-height: 1.35;
+  }
+  .install-tip svg { width: 22px; height: 22px; flex: none; }
+  .install-tip .btn { margin-left: auto; flex: none; }
+  .install-tip .x { margin-left: 4px; }
+}
