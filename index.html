@@ -1,6 +1,21 @@
 <title>TESSEN — AI &amp; Automation Consulting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8" />
+<!-- Etiqueta de Google (Analytics). Modo de consentimiento: sin cookies de analítica hasta que se aceptan en el aviso. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var tessenConsent = null;
+  try { tessenConsent = localStorage.getItem('tessen_cookie_consent'); } catch (e) {}
+  gtag('consent', 'default', {
+    analytics_storage: tessenConsent === 'accepted' ? 'granted' : 'denied',
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=G-J443FP3D2H"></script>
+<script>
+  gtag('js', new Date());
+</script>
 <meta name="description" content="TESSEN — Ayudamos a empresas a transformar la manera en que trabajan, mediante IA y automatizaciones que se integran con sus procesos, personas y tecnología." />
 <link rel="icon" type="image/png" href="https://tessenconsulting.com/assets/tessen/logo-icon.png" />
 <link rel="apple-touch-icon" href="https://tessenconsulting.com/assets/tessen/logo-icon.png" />
@@ -890,7 +905,7 @@
 
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-banner-inner">
-    <p>Usamos cookies propias para el funcionamiento básico de la web. Al continuar navegando, aceptas su uso.</p>
+    <p>Usamos cookies propias para el funcionamiento básico de la web y, solo si las aceptas, cookies de Google Analytics para saber cómo se usa y mejorarla.</p>
     <div class="cookie-actions">
       <button class="btn btn-ghost" id="cookieReject">Rechazar</button>
       <button class="btn btn-primary" id="cookieAccept">Aceptar</button>
@@ -910,10 +925,12 @@
   }
   document.getElementById('cookieAccept').addEventListener('click', () => {
     localStorage.setItem('tessen_cookie_consent', 'accepted');
+    gtag('consent', 'update', { analytics_storage: 'granted' });
     cookieBanner.classList.remove('visible');
   });
   document.getElementById('cookieReject').addEventListener('click', () => {
     localStorage.setItem('tessen_cookie_consent', 'rejected');
+    gtag('consent', 'update', { analytics_storage: 'denied' });
     cookieBanner.classList.remove('visible');
   });
 
